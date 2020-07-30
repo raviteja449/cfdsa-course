@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nwdb-pvc
+  labels:
+    app: nwdb
+    app.kubernetes.io/name: nwdb
+  annotations:
+    volume.beta.kubernetes.io/storeage-provider: docs.csi.digitalocean.com
+
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: do-block-storage
+  resources:
+    requests:
+      # G - 1000MB, i - 1024MB
+      storage: "1Gi"
